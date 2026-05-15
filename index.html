@@ -1,0 +1,7 @@
+<!DOCTYPE html><html lang="uz"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Pixel Art</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}body{background:#0b1120;color:white;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}.card{background:#1e293b;padding:20px;border-radius:12px;width:320px;text-align:center}h2{color:#ec4899;margin-bottom:15px}label{display:block;padding:10px;background:#334155;border-radius:6px;cursor:pointer;margin-bottom:10px}input{display:none}canvas{image-rendering:pixelated;width:100%;border-radius:8px;margin-bottom:10px}button{width:100%;padding:8px;background:#10b981;color:white;border:none;border-radius:6px;cursor:pointer}</style></head><body>
+<div class="card"><h2>🖼️ Pixel Art Converter</h2><label for="f">📁 Rasm yuklash</label><input type="file" id="f" accept="image/*" onchange="convert(event)"><canvas id="c" width="32" height="32"></canvas><button onclick="download()">📥 PNG Yuklab olish</button></div>
+<script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');function convert(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{ctx.imageSmoothingEnabled=false;ctx.drawImage(img,0,0,32,32)};img.src=ev.target.result};r.readAsDataURL(f)}
+function download(){const a=document.createElement('a');a.download='pixel-art.png';a.href=c.toDataURL();a.click()}
+</script></body></html>
